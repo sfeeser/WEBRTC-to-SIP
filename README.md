@@ -4,9 +4,11 @@ How to setup Kamailio + RTPEngine + TURN server to enable calling between WEBRTC
 This setup is for Debian 8 Jessie for all servers.
 
 For the clients to avoid firewalls and to have the best setup, divide the servers like this:
-Server #1 : Kamailio + RTPEngine
-Server #2 : TURN
-Server #3 : WEBRTC client
+1. Server : Kamailio + RTPEngine
+2. Server : TURN
+3. Server : WEBRTC client
+
+The configuration is setup to try connecting with SIP with no modification. If the proxy receives a "488 Not Supported Here" from the other side, it will remove SRTP and ICE and try again.
 
 ## Get certificates
 For the certificates you need I recommend Let's Encrypt certificates. They will work for both Kamailio TLS and Nginx TLS. On the servers you need certificates, run the following (you must stop services running on port 443 during certificate request/renewal):
