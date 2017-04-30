@@ -9,7 +9,7 @@ For the clients to avoid firewalls and to have the best setup, divide the server
 2. Server - TURN
 3. Server - WEBRTC client
 
-The configuration is setup to try connecting with SIP with no modification. If the proxy receives a `488 Not Supported Here` from the other side, it will remove SRTP and ICE and try again. You can find an older commit that always translates before trying legacy SIP, this can be useful if you know that none of your legacy SIP clients support SRTP or ICE.
+The default configuration is setup to always bridge via RtpEngine, if you want to bridge on failure, comment out the line `#!define WITH_ALWAYS_BRIDGE` in `etc/kamailio/kamailio.cfg`. If you bridge on failure, the proxy receives a `488 Not Acceptable Here` from the other side, it will remove SRTP/ICE/RTCP-mux and try again.
 
 ## Get certificates
 For the certificates you need I recommend Let's Encrypt certificates. They will work for both Kamailio TLS and Nginx TLS. On the servers you need certificates, run the following (you must stop services running on port 443 during certificate request/renewal):
