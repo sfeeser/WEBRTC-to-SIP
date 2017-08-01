@@ -1,7 +1,7 @@
 # WEBRTC to SIP client and server
 How to setup Kamailio + RTPEngine + TURN server to enable calling between WEBRTC client and legacy SIP clients. This setup will bridge SRTP --> RTP and ICE --> nonICE to make a WEBRTC client (SIPJs) be able to call legacy SIP clients.
 
-This setup is for Debian 8 Jessie for all servers.
+This setup is for Debian 9 Stretch for all servers.
 
 For the clients to avoid firewalls and to have the best setup, divide the servers like this:
 
@@ -9,14 +9,13 @@ For the clients to avoid firewalls and to have the best setup, divide the server
 2. Server - TURN
 3. Server - WEBRTC client
 
-The default configuration is setup to always bridge via RtpEngine, if you want to bridge on failure, comment out the line `#!define WITH_ALWAYS_BRIDGE` in `etc/kamailio/kamailio.cfg`. If you bridge on failure, the proxy receives a `488 Not Acceptable Here` from the other side, it will remove SRTP/ICE/RTCP-mux and try again.
+The default configuration is setup to always bridge via RtpEngine. To change the behavior, take a look in the `SETUP_BRIDGING` route and corresponding reply-routes.
 
 ## Get certificates
 For the certificates you need I recommend Let's Encrypt certificates. They will work for both Kamailio TLS and Nginx TLS. On the servers you need certificates, run the following (you must stop services running on port 443 during certificate request/renewal):
 ```bash
-git clone https://github.com/letsencrypt/letsencrypt
-cd letsencrypt
-./letsencrypt certonly --standalone -d YOUR-DOMAIN
+apt-get install certbot
+certbot certonly --standalone -d YOUR-DOMAIN
 ```
 You will then find the certificates under:
 ```bash
@@ -25,7 +24,7 @@ You will then find the certificates under:
 ```
 
 ## Get configuration files
-All files needed to setup all components on Debian 8 Jessie.
+All files needed to setup all components on Debian 9 Stretch.
 ```bash
 git clone https://github.com/havfo/WEBRTC-to-SIP.git
 cd WEBRTC-to-SIP
