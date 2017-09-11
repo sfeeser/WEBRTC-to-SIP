@@ -11,6 +11,9 @@ For the clients to avoid firewalls and to have the best setup, divide the server
 
 The default configuration is setup to always bridge via RtpEngine. To change the behavior, take a look in the `SETUP_BRIDGING` route and corresponding reply-routes.
 
+## Architecture
+![WebRTC - SIP architecture](https://raw.githubusercontent.com/havfo/WEBRTC-to-SIP/master/images/webrtc-sip.png "WebRTC to SIP architecture")
+
 ## Get certificates
 For the certificates you need I recommend Let's Encrypt certificates. They will work for both Kamailio TLS and Nginx TLS. On the servers you need certificates, run the following (you must stop services running on port 443 during certificate request/renewal):
 ```bash
