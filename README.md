@@ -9,13 +9,13 @@ For the clients to avoid firewalls and to have the best setup, divide the server
 2. Server - TURN
 3. Server - WEBRTC client
 
-The default configuration is setup to always bridge via RtpEngine. To change the behavior, take a look in the `SETUP_BRIDGING` route and corresponding reply-routes.
+The default configuration is setup to always bridge via RTPEngine. To change the behavior, take a look in the `SETUP_BRIDGING` route and corresponding reply-routes.
 
 ## Architecture
 ![WebRTC - SIP architecture](https://raw.githubusercontent.com/havfo/WEBRTC-to-SIP/master/images/webrtc-sip.png "WebRTC to SIP architecture")
 
 ## Get certificates
-For the certificates you need I recommend Let's Encrypt certificates. They will work for both Kamailio TLS and Nginx TLS. On the servers you need certificates, run the following (you must stop services running on port 443 during certificate request/renewal):
+For the certificates you need a simple solution is Let's Encrypt certificates. They will work for both Kamailio TLS and Nginx TLS. On the servers you need certificates, run the following (you must stop services running on port 443 during certificate request/renewal):
 ```bash
 apt-get install certbot
 certbot certonly --standalone -d YOUR-DOMAIN
@@ -51,8 +51,8 @@ cp etc/default/ngcp-rtpengine-daemon /etc/default/
 /etc/init.d/ngcp-rtpengine-daemon restart
 ```
 
-## Install IPTables firewall (optional)
-This is optional. If this is installed it will persist after reboot. You can run the iptables.sh at any time after it is set up.
+## Install IPTables firewall
+This is required by RTPEngine for setting up the IPTables chain, and will persist after reboot. You can run the iptables.sh script at any time after it is set up.
 ```bash
 cd WEBRTC-to-SIP
 chmod +x iptables.sh
@@ -94,4 +94,4 @@ cp etc/turn* /etc/
 ```
 
 ## Testing
-You should now be able to go to https://webrtcnginxserver/ and call to legacy SIP clients.
+You should now be able to go to https://webrtcnginxserver/ and call legacy SIP clients.
