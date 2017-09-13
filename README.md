@@ -39,7 +39,7 @@ find . -type f -print0 | xargs -0 sed -i 's/XXX-XXX/PUT-DOMAIN-OF-YOUR-TURN-SERV
 ## Install RTPEngine
 This will do the SRTP-RTP bridging needed to make WEBRTC clients talk to legacy SIP server/clients.
 ```bash
-apt-get install dpkg-dev debhelper iptables-dev libcurl4-openssl-dev libglib2.0-dev libhiredis-dev libpcre3-dev libssl-dev markdown zlib1g-dev libxmlrpc-core-c3-dev dkms linux-headers-`uname -r` default-libmysqlclient-dev libavcodec-dev libavfilter-dev libavformat-dev libavresample-dev libavutil-dev libevent-dev libjson-glib-dev libpcap-dev
+apt-get install build-essential dpkg-dev debhelper iptables-dev libcurl4-openssl-dev libglib2.0-dev libhiredis-dev libpcre3-dev libssl-dev markdown zlib1g-dev libxmlrpc-core-c3-dev dkms linux-headers-`uname -r` default-libmysqlclient-dev libavcodec-dev libavfilter-dev libavformat-dev libavresample-dev libavutil-dev libevent-dev libjson-glib-dev libpcap-dev
 git clone https://github.com/sipwise/rtpengine.git
 cd rtpengine
 ./debian/flavors/no_ngcp
