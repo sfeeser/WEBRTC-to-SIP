@@ -45,7 +45,7 @@ cd rtpengine
 ./debian/flavors/no_ngcp
 dpkg-buildpackage
 cd ..
-dpkg -i 'ngcp-rtpengine-daemon_*' 'ngcp-rtpengine-iptables_*' 'ngcp-rtpengine-kernel-dkms_*'
+dpkg -i ngcp-rtpengine-daemon_*.deb ngcp-rtpengine-iptables_*.deb ngcp-rtpengine-kernel-dkms_*.deb
 cd WEBRTC-to-SIP
 cp etc/default/ngcp-rtpengine-daemon /etc/default/
 /etc/init.d/ngcp-rtpengine-daemon restart
