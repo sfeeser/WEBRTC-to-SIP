@@ -9,7 +9,7 @@ For the clients to avoid firewalls and to have the best setup, divide the server
 2. Server - TURN
 3. Server - WEBRTC client
 
-The default configuration is setup to always bridge via RTPEngine. To change the behavior, take a look in the `SETUP_BRIDGING` route and corresponding reply-routes.
+The default configuration is setup to always bridge via RTPEngine. To change the behavior, take a look in the `NATMANAGE` route.
 
 ## Architecture
 ![WebRTC - SIP architecture](https://raw.githubusercontent.com/havfo/WEBRTC-to-SIP/master/images/webrtc-sip.png "WebRTC to SIP architecture")
