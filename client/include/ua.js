@@ -13,15 +13,15 @@ var elements = {
 };
 
 var config = {
-  userAgentString: 'SIP.js/0.7.0 BB',
+  userAgentString: 'SIP.js/0.7.8 BB',
   traceSip: true,
   register: true,
   uri: "websip@XXXX-XXXX",
   password: "websip",
   rel100: SIP.C.supported.SUPPORTED,
-  wsServers: "wss://XXXX-XXXX:443",
+  wsServers: "wss://XXXX-XXXX:443/ws",
   turnServers: {
-  	urls:"turn:XXX-XXX:80?transport=tcp",
+  	urls:"turn:XXX-XXX:443?transport=tcp",
   	username:"websip",
   	password:"websip"
   }

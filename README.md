@@ -3,13 +3,12 @@ How to setup Kamailio + RTPEngine + TURN server to enable calling between WEBRTC
 
 This setup is for Debian 9 Stretch for all servers.
 
-For the clients to avoid firewalls and to have the best setup, divide the servers like this:
+This setup is configured to run with the following servers:
 
-1. Server - Kamailio + RTPEngine
+1. Server - Kamailio + RTPEngine + Nginx (WEBRTC client)
 2. Server - TURN
-3. Server - WEBRTC client
 
-The default configuration is setup to always bridge via RTPEngine. To change the behavior, take a look in the `NATMANAGE` route.
+The configuration is setup to always bridge via RTPEngine. To change the behavior, take a look in the `NATMANAGE` route.
 
 ## Architecture
 ![WebRTC - SIP architecture](https://raw.githubusercontent.com/havfo/WEBRTC-to-SIP/master/images/webrtc-sip.png "WebRTC to SIP architecture")
