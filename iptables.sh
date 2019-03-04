@@ -47,12 +47,16 @@ $IPTABLES -A INPUT -p tcp --dport 5060 -j ACCEPT
 $IPTABLES -A INPUT -p udp --dport 5060 -j ACCEPT
 $IPTABLES -A INPUT -p tcp --dport 80 -j ACCEPT
 $IPTABLES -A INPUT -p tcp --dport 443 -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport 8080 -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport 4443 -j ACCEPT
 
 $IP6TABLES -A INPUT -p tcp --dport 5061 -j ACCEPT
 $IP6TABLES -A INPUT -p tcp --dport 5060 -j ACCEPT
 $IP6TABLES -A INPUT -p udp --dport 5060 -j ACCEPT
 $IP6TABLES -A INPUT -p tcp --dport 80 -j ACCEPT
 $IP6TABLES -A INPUT -p tcp --dport 443 -j ACCEPT
+$IP6TABLES -A INPUT -p tcp --dport 8080 -j ACCEPT
+$IP6TABLES -A INPUT -p tcp --dport 4443 -j ACCEPT
 
 # RTPEngine
 $IPTABLES -I INPUT -p udp -j RTPENGINE --dport $RTP --id 0

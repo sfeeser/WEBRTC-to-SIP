@@ -1,5 +1,5 @@
 # WEBRTC to SIP client and server
-How to setup Kamailio + RTPEngine + TURN server to enable calling between WEBRTC client and legacy SIP clients. This setup will bridge SRTP --> RTP and ICE --> nonICE to make a WEBRTC client (SIPJs) be able to call legacy SIP clients.
+How to setup Kamailio + RTPEngine + TURN server to enable calling between WEBRTC client and legacy SIP clients. This config is IPv6 enabled by default. This setup will bridge SRTP --> RTP and ICE --> nonICE to make a WEBRTC client (SIPJs) be able to call legacy SIP clients.
 
 This setup is for Debian 9 Stretch for all servers.
 
@@ -30,7 +30,8 @@ All files needed to setup all components on Debian 9 Stretch.
 ```bash
 git clone https://github.com/havfo/WEBRTC-to-SIP.git
 cd WEBRTC-to-SIP
-find . -type f -print0 | xargs -0 sed -i 's/XXXXX-XXXXX/PUT-IP-OF-YOUR-SIP-SERVER-HERE/g'
+find . -type f -print0 | xargs -0 sed -i 's/XXXXXX-XXXXXX/PUT-IPV6-OF-YOUR-SIP-SERVER-HERE/g'
+find . -type f -print0 | xargs -0 sed -i 's/XXXXX-XXXXX/PUT-IPV4-OF-YOUR-SIP-SERVER-HERE/g'
 find . -type f -print0 | xargs -0 sed -i 's/XXXX-XXXX/PUT-DOMAIN-OF-YOUR-SIP-SERVER-HERE/g'
 find . -type f -print0 | xargs -0 sed -i 's/XXX-XXX/PUT-DOMAIN-OF-YOUR-TURN-SERVER-HERE/g'
 ```
