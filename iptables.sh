@@ -41,22 +41,35 @@ $IP6TABLES -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 137 -m hl --hl-eq 255 -j
 $IPTABLES -A INPUT -i lo -j ACCEPT
 $IP6TABLES -A INPUT -i lo -j ACCEPT
 
-# SIP/TURN/HTTP(S)
+# SIP
 $IPTABLES -A INPUT -p tcp --dport 5061 -j ACCEPT
 $IPTABLES -A INPUT -p tcp --dport 5060 -j ACCEPT
 $IPTABLES -A INPUT -p udp --dport 5060 -j ACCEPT
-$IPTABLES -A INPUT -p tcp --dport 80 -j ACCEPT
-$IPTABLES -A INPUT -p tcp --dport 443 -j ACCEPT
-$IPTABLES -A INPUT -p tcp --dport 8080 -j ACCEPT
 $IPTABLES -A INPUT -p tcp --dport 4443 -j ACCEPT
-
+$IPTABLES -A INPUT -p tcp --dport 8080 -j ACCEPT
 $IP6TABLES -A INPUT -p tcp --dport 5061 -j ACCEPT
 $IP6TABLES -A INPUT -p tcp --dport 5060 -j ACCEPT
 $IP6TABLES -A INPUT -p udp --dport 5060 -j ACCEPT
+$IP6TABLES -A INPUT -p tcp --dport 4443 -j ACCEPT
+$IP6TABLES -A INPUT -p tcp --dport 8080 -j ACCEPT
+
+# HTTP (load + web)
+$IPTABLES -A INPUT -p tcp --dport 80 -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport 443 -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport 3443 -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport 3480 -j ACCEPT
 $IP6TABLES -A INPUT -p tcp --dport 80 -j ACCEPT
 $IP6TABLES -A INPUT -p tcp --dport 443 -j ACCEPT
-$IP6TABLES -A INPUT -p tcp --dport 8080 -j ACCEPT
-$IP6TABLES -A INPUT -p tcp --dport 4443 -j ACCEPT
+$IP6TABLES -A INPUT -p tcp --dport 3443 -j ACCEPT
+$IP6TABLES -A INPUT -p tcp --dport 3480 -j ACCEPT
+
+# TURN
+$IPTABLES -A INPUT -p udp --dport 3478 -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport 3478 -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport 3479 -j ACCEPT
+$IP6TABLES -A INPUT -p udp --dport 3478 -j ACCEPT
+$IP6TABLES -A INPUT -p tcp --dport 3478 -j ACCEPT
+$IP6TABLES -A INPUT -p tcp --dport 3479 -j ACCEPT
 
 # RTPEngine
 $IPTABLES -I INPUT -p udp -j RTPENGINE --dport $RTP --id 0
